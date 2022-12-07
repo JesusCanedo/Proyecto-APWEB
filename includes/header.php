@@ -1,7 +1,7 @@
         <header>
         <div class="container">
           <div class="header_logo">
-            <a href="/index.html">
+            <a href="index.php">
               <img src="media/logo_stonks.png" alt>
             </a>
           </div>
