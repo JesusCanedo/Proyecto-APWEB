@@ -6,9 +6,9 @@
             </a>
           </div>
           <nav>
-            <a href="#">TIENDA</a>
-            <a href="#">PERFIL</a>
-            <a href="#">BIBLIOTECA</a>
+            <a href="#nuestro-catalogo">TIENDA</a>
+            <a href="#instalar">PERFIL</a>
+            <a href="#final">BIBLIOTECA</a>
             
           </nav>
         </div>
