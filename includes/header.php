@@ -6,8 +6,8 @@
             </a>
           </div>
           <nav>
-            <a href="#nuestro-catalogo">TIENDA</a>
-            <a href="#instalar">PERFIL</a>
+            <a href="#nuestro-catalago">TIENDA</a>
+            <a href="#Instalar">PERFIL</a>
             <a href="#final">BIBLIOTECA</a>
             
           </nav>
