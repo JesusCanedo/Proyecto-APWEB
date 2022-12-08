@@ -53,6 +53,9 @@ include("includes/utils.php");
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="styleForms.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.0/animate.min.css">
+    <link rel="stylesheet" href="styleForms.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.0/animate.min.css">
+
    
 </head>
 

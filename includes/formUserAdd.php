@@ -1,7 +1,7 @@
 <link rel="stylesheet" href="styleForms.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.0/animate.min.css">
 
-<form action="newUser.php" method="post" class="form-box-user animated fadeInUp">
+<form action="newUser.php" method="post" class="form-box animated fadeInUp">
     <table cellpadding="2">
     <h1 class="form-title-user">Registro</h1>
         <tr>

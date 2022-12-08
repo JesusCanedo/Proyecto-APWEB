@@ -56,37 +56,24 @@ include("includes/utils.php");
 <body>
     <br><br><br><br><br>
 
-    <form action="updateUser.php" method="post" class="form-box animated fadeInUp">
-    <table cellpadding="2">
-        <tr>
-        <h1 class="form-title">Agregar genero</h1>
-            <td><input type="text" name="nickName"
-                    value="<?php echo $_SESSION['userNickName'] ?>"></td>
-        </tr>
-        <tr>
-            <td><input type="text" name="nombre" value="<?php echo $_SESSION['userName']?>">
-            </td>
+    <form action="newGenero.php" method="post" class="form-box animated fadeInUp">
+        <table cellpadding="2">
+            <tr>
+            <h1 class="form-title">Agregar genero</h1>
+                <td><input type="text" name="nombreGenero" placeholder="Genero"></td>
+            </tr>
+            <tr>
+                <td><textarea name="descripcion" rows="10" cols="40" 
+                placeholder="Descripcion"></textarea>
+                </td>
 
-        </tr>
-        <tr>
-            <td><input type="text" name="apellidos"
-                    value="<?php echo $_SESSION['userLastName'] ?>"></td>
+            </tr>
 
-        </tr>
-        <tr>
-            <td><input disabled="disabled" type="text" name="correo" value="<?php echo $_SESSION['userEmail']?>"></td>
-
-        </tr>
-        <tr>
-            <td><label class="form-rol" for="rol">Desarrollador?:*</label></td>
-            <td><input type="checkbox" name="rol"></td>
-        </tr>
-        <tr>
-        <td><input type="submit" value="Confirmar" name="userRegister"></td>
-      </tr>
-    </table>
-</form>
-
+            <tr>
+                <td><input type="submit" value="Confirmar" name="newGenero"></td>
+            </tr>
+        </table>
+    </form>
 
 </body>
 

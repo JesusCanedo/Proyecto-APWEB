@@ -51,6 +51,10 @@ include("includes/utils.php");
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>stonks</title>
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="styleForms.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.0/animate.min.css">
+
+   
 
 </head>
 
@@ -59,19 +63,18 @@ include("includes/utils.php");
     <?php
     
     ?>
-    <form action="newJuego.php" method="post">
+    <form action="newJuego.php" method="post"  class="form-box-user animated fadeInUp">
         <table cellpadding="2">
             <tr>
-                <td><label for="nombreJuego">Nombre del juego:</label></td>
-                <td><input type="text" name="nombreJuego"></td>
+        <h1 class="form-title">Agregar Juego</h1>
+                <td><input type="text" name="nombreJuego" placeholder="Nombre del Juego"></td>
             </tr>
             <tr>
-                <td><label for="descripcionJuego">Descripcion:</label></td>
-                <td><textarea name="descripcionJuego" rows="10" cols="40"></textarea></td>
+                <td><textarea name="descripcionJuego" rows="10" cols="40" placeholder="Descripcion del juego"></textarea></td>
             </tr>
             
             <tr>
-                <td><label for="idGenero">Genero:</label></td>
+                <td><label class="form-rol-genero" for="idGenero">Genero:</label></td>
                 <td><select name="idGenero">
                     <?php 
                     for ($i=1; $i <= sizeof($generos); $i++) {
