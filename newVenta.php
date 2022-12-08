@@ -5,8 +5,7 @@ if (!isset($_SESSION)) {
     //checamos si inicio sesion
     if (!isset($_SESSION['userId']))
         header('Location: userLogin.php?auth=false');
-    if ($_SESSION['userRole'] === "agente" )
-        header('Location: index.php?admin=false');
+    
 }
 
 include("connections/conn_localhost.php");
@@ -28,8 +27,8 @@ if (isset($_POST['newVenta'])) {
     if (!isset($error)) {
         //llamamos a la funcion para insertar un nuevo juego
 
-        stonksGetNombreJuegos($conn_localhost);
-        //header("location: newVenta.php?si=true");
+        $juegos = stonksInsertarVenta($conn_localhost,$_POST['idJuego'],$_SESSION['userId']);
+        header("location: index.php?venta=true");
 
 
 
@@ -66,8 +65,8 @@ include("includes/utils.php");
                 <td><label for="idJuego">Genero:</label></td>
                 <td><select name="idJuego">
                     <?php 
-                    for ($i=1; $i <= sizeof($generos); $i++) {
-                        echo "<option value=\"" . $generos[$i]['id'] . "\">" . $generos[$i]['nombre'] . "</option>";
+                    for ($i=0; $i < sizeof($juegos); $i++) {
+                        echo "<option value=\"" . $juegos[$i]['id'] . "\">" . $juegos[$i]['nombre'] . "</option>";
                         
                     }
                     ?>

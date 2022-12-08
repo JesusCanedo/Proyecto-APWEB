@@ -153,7 +153,7 @@ function stonksNewJuego($connection, $nombre, $idGenero, $idDesarrollador, $desc
 //Obitiene una matriz de los juegos
 function stonksGetNombreJuegos($connection)
 {
-
+  //seleccionamos todos los datos de la tabla
   $queryGetNombreJuegos = "SELECT * FROM juegos";
 
   // Ejecutamos el query
@@ -171,8 +171,23 @@ function stonksGetNombreJuegos($connection)
       $resdata[$key]['idDesarrollador'] = $data[$key][3];
       $resdata[$key]['descripcion'] = $data[$key][4];
     }
-    return($resdata);
+    return ($resdata);
   }
 }
+//inserta una nueva venta en la tabla ventas
+function stonksInsertarVenta($connection, $idJuego, $idUsuario)
+{
+  //se puede ejecutar el query directamente dado que no hay nesesidad de proteccion
+  mysqli_query($connection, "INSERT INTO venta (idJuego, idUsuario) VALUES ($idJuego, $idUsuario)");
+  //insertanmos el juego en la bibliteca del usuario
+  stonksInsertarBiblioteca($connection, $idJuego, $idUsuario);
+}
+function stonksInsertarBiblioteca($connection, $idJuego, $idUsuarios)
+{
+  //se puede ejecutar el query directamente dado que no hay nesesidad de proteccion
+  mysqli_query($connection, "INSERT INTO biblioteca (idJuego, idUsuario) VALUES ($idJuego, $idUsuarios))");
+}
+
+
 
 ?>
