@@ -145,9 +145,34 @@ function stonksNewJuego($connection, $nombre, $idGenero, $idDesarrollador, $desc
     mysqli_real_escape_string($connection, trim($descripcion))
 
   );
-  
+
   mysqli_query($connection, $queryNewGame) or trigger_error("El query para insertar juegos falló");
 
 
 }
+//Obitiene una matriz de los juegos
+function stonksGetNombreJuegos($connection)
+{
+
+  $queryGetNombreJuegos = "SELECT * FROM juegos";
+
+  // Ejecutamos el query
+  $resQueryGetNombreJuegos = mysqli_query($connection, $queryGetNombreJuegos) or trigger_error("Login query failed");
+  //the cake is a lie
+
+  //Contamos el recordset (el resultado esperado para un login valido es 1)
+  if (mysqli_num_rows($resQueryGetNombreJuegos)) {
+    // Hacemos un fetch del recordset
+    $data = mysqli_fetch_all($resQueryGetNombreJuegos);
+    foreach ($data as $key => $value) {
+      $resdata[$key]['id'] = $data[$key][0];
+      $resdata[$key]['nombre'] = $data[$key][1];
+      $resdata[$key]['idGenero'] = $data[$key][2];
+      $resdata[$key]['idDesarrollador'] = $data[$key][3];
+      $resdata[$key]['descripcion'] = $data[$key][4];
+    }
+    return($resdata);
+  }
+}
+
 ?>
