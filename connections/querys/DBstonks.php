@@ -66,7 +66,7 @@ function stonksUpdateUser($connection, $userId, $nickName, $nombre, $apellidos, 
 }
 function stonksRecargarSession($connection, $userId)
 {
-  
+
   // Armamos el query para verificar email y password en la BD
   $queryRefresh = sprintf(
     "SELECT userName, nombre, apellidos, correo, rol FROM usuarios WHERE id = '%s'",
@@ -75,23 +75,79 @@ function stonksRecargarSession($connection, $userId)
 
   // Ejecutamos el query
   $resqueryRefresh = mysqli_query($connection, $queryRefresh) or trigger_error("Login query failed");
+  //the cake is a lie
 
-  
-//Contamos el recordset (el resultado esperado para un login valido es 1)
+  //Contamos el recordset (el resultado esperado para un login valido es 1)
   if (mysqli_num_rows($resqueryRefresh)) {
     // Hacemos un fetch del recordset
     $userData = mysqli_fetch_assoc($resqueryRefresh);
 
     // Defninimos variables de sesion en $_SESSION
-    
+
     $_SESSION['userNickName'] = $userData['userName'];
     $_SESSION['userName'] = $userData['nombre'];
     $_SESSION['userLastName'] = $userData['apellidos'];
     $_SESSION['userEmail'] = $userData['correo'];
     $_SESSION['userRole'] = $userData['rol'];
 
-    
+
   }
 }
+//funcion para añadir nuevo genero
+function stonksNewGenero($connection, $nombre, $descripcion)
+{
 
+  $queryNewGenero = sprintf(
+    "INSERT INTO genero (nombre, descripcion) VALUES ('%s', '%s')",
+    mysqli_real_escape_string($connection, trim($nombre)),
+    mysqli_real_escape_string($connection, trim($descripcion))
+
+  );
+
+  //mysqli_query($connection, $queryNewGenero) or trigger_error("El query para registrar usuarios falló");
+
+}
+//Funcion que devuelve matriz con datos de la tabla genero
+function stonksGetGeneros($connection)
+{
+
+
+  $queryGetGenero = "SELECT id, nombre, descripcion FROM genero";
+
+  // Ejecutamos el query
+  $resueryGetGenero = mysqli_query($connection, $queryGetGenero) or trigger_error("Login query failed");
+  //the cake is a lie
+
+  //Contamos el recordset (el resultado esperado para un login valido es 1)
+  if (mysqli_num_rows($resueryGetGenero)) {
+    // Hacemos un fetch del recordset
+
+    //return (mysqli_num_rows($resueryGetGenero));
+    for ($i = 1; $i <= mysqli_num_rows($resueryGetGenero); $i++) {
+      $queryGetGeneroFor = "SELECT id, nombre, descripcion FROM genero WHERE id = $i";
+      $resQueryGetGeneroFor = mysqli_query($connection, $queryGetGeneroFor) or trigger_error("Login query failed");
+      $data = mysqli_fetch_assoc($resQueryGetGeneroFor);
+      $generos[$i]['id'] = $data['id'];
+      $generos[$i]['nombre'] = $data['nombre'];
+      $generos[$i]['descripcion'] = $data['descripcion'];
+    }
+    return ($generos);
+
+  }
+}
+//funcion para insertar nuevo juego
+function stonksNewJuego($connection, $nombre, $idGenero, $idDesarrollador, $descripcion)
+{
+  //iniciamos el query
+  $queryNewGame = sprintf(
+    "INSERT INTO juegos (nombre, idGenero, idDesarrolador, descripcion) VALUES ('%s', $idGenero, $idDesarrollador, '%s')",
+    mysqli_real_escape_string($connection, trim($nombre)),
+    mysqli_real_escape_string($connection, trim($descripcion))
+
+  );
+  
+  mysqli_query($connection, $queryNewGame) or trigger_error("El query para insertar juegos falló");
+
+
+}
 ?>

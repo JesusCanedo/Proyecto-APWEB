@@ -31,7 +31,7 @@ if (isset($_POST['userRegister'])) {
             $rol = "agente";
         }
         //llamamos la funcion para actualizar el nuevo usuario
-        stonksUpdateUser($conn_localhost,$_SESSION['userId'],$_POST['nickName'],$_POST['nombre'],$_POST['apellidos'],$_POST['rol'], "updateUser.php?updateUser=true");
+        stonksUpdateUser($conn_localhost,$_SESSION['userId'],$_POST['nickName'],$_POST['nombre'],$_POST['apellidos'],$rol, "updateUser.php?updateUser=true");
         
     }
 
@@ -90,6 +90,11 @@ include("includes/utils.php");
         <td><input type="submit" value="Confirmar" name="userRegister"></td>
       </tr>
     </table>
+
+    <?php
+    
+    
+    ?>
 </form>
 
 

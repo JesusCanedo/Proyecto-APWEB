@@ -5,12 +5,15 @@ if (!isset($_SESSION)) {
     //checamos si inicio sesion
     if (!isset($_SESSION['userId']))
         header('Location: userLogin.php?auth=false');
-    if (!$_SESSION['rol'] === "admin")
+    if ($_SESSION['userRole'] === "agente" )
         header('Location: index.php?admin=false');
 }
 
 include("connections/conn_localhost.php");
 include("connections/querys/DBstonks.php");
+//pedimos los generos para el formulario
+$generos = stonksGetGeneros($conn_localhost);
+
 
 //el formulario se envio
 if (isset($_POST['newGenero'])) {
@@ -23,9 +26,10 @@ if (isset($_POST['newGenero'])) {
 
     //checamos si hay errores
     if (!isset($error)) {
-        //llamamos a la funcion para insertar un nuevo genero
-        stonksNewGenero($conn_localhost, $_POST['nombreGenero'], $_POST['descripcion']);
-        header("location: newGenero.php?si=true");
+        //llamamos a la funcion para insertar un nuevo juego
+        stonksNewJuego($conn_localhost,$_POST['nombreJuego'],$_POST['idGenero'],$_SESSION['userId'],$_POST['descripcionJuego']);
+        
+        //header("location: newJuego.php?si=true");
 
 
 
@@ -52,20 +56,31 @@ include("includes/utils.php");
 
 <body>
     <br><br><br><br><br>
-
-    <form action="newGenero.php" method="post">
+    <?php
+    
+    ?>
+    <form action="newJuego.php" method="post">
         <table cellpadding="2">
             <tr>
-                <td><label for="nombreGenero">Nombre del genero:</label></td>
-                <td><input type="text" name="nombreGenero"></td>
+                <td><label for="nombreJuego">Nombre del juego:</label></td>
+                <td><input type="text" name="nombreJuego"></td>
             </tr>
             <tr>
-                <td><label for="descricion">Descripcion:</label></td>
-                <td><textarea name="descripcion" rows="10" cols="40"></textarea>
-                </td>
-
+                <td><label for="descripcionJuego">Descripcion:</label></td>
+                <td><textarea name="descripcionJuego" rows="10" cols="40"></textarea></td>
             </tr>
-
+            
+            <tr>
+                <td><label for="idGenero">Genero:</label></td>
+                <td><select name="idGenero">
+                    <?php 
+                    for ($i=1; $i <= sizeof($generos); $i++) {
+                        echo "<option value=\"" . $generos[$i]['id'] . "\">" . $generos[$i]['nombre'] . "</option>";
+                        
+                    }
+                    ?>
+                </select></td>
+            </tr>
             <tr>
                 <td></td>
                 <td><input type="submit" value="Confirmar" name="newGenero"></td>
