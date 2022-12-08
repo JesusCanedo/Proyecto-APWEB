@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 <?php
 if (!isset($_SESSION)) {
     session_start();
@@ -6,8 +5,6 @@ if (!isset($_SESSION)) {
 
 
 ?>
-=======
->>>>>>> 46979f6fb2d587302fa4304e48d5aae06b8683cd
 <!DOCTYPE html>
 <html lang="en">
 <head>
