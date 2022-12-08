@@ -1,8 +1,7 @@
-<<<<<<< HEAD
 <header>
   <div class="container">
     <div class="header_logo">
-      <a href="/index.php">
+      <a href="index.php">
         <img src="media/logo_stonks.png" alt>
       </a>
     </div>
@@ -13,7 +12,7 @@
       <?php if(isset($_SESSION['userNickName'])) {
         echo ("<a href=\"#\">" . $_SESSION['userNickName'] . "</a>");
       }else {
-        echo ("<a href=\"#\">INGRESAR</a>");
+        echo ("<a href=\"userLogin.php\">INGRESAR</a>");
       } ?>
       
     </nav>

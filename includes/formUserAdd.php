@@ -1,45 +1,45 @@
-<form action="newUser.php" method="post">
+<link rel="stylesheet" href="styleForms.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.0/animate.min.css">
+
+<form action="newUser.php" method="post" class="form-box-user animated fadeInUp">
     <table cellpadding="2">
+    <h1 class="form-title-user">Registro</h1>
         <tr>
-            <td><label for="nickName">Nickname:*</label></td>
-            <td><input type="text" name="nickName"
+            <td><input type="text" name="nickName" placeholder="Nickname"
                     value="<?php if (isset($_POST['nickName']))
                     echo $_POST['nickName']; ?>"></td>
         </tr>
         <tr>
-            <td><label for="nombre">Nombre:*</label></td>
-            <td><input type="text" name="nombre" value="<?php if (isset($_POST['nombre']))
+            <td><input type="text" name="nombre" placeholder="Nombre" 
+            value="<?php if (isset($_POST['nombre']))
                     echo $_POST['nombre']; ?>">
             </td>
 
         </tr>
         <tr>
-            <td><label for="apellidos">Apellidos:*</label></td>
-            <td><input type="text" name="apellidos"
+            <td><input type="text" name="apellidos" placeholder="Apellidos"
                     value="<?php if (isset($_POST['apellidos']))
                         echo $_POST['apellidos']; ?>"></td>
 
         </tr>
         <tr>
-            <td><label for="correo">Correo:*</label></td>
-            <td><input type="text" name="correo" value="<?php if (isset($_POST['correo']))
+            <td><input type="text" name="correo" placeholder="Email"
+            value="<?php if (isset($_POST['correo']))
                         echo $_POST['correo']; ?>"></td>
 
         </tr>
         <tr>
-            <td><label for="Contrasena">Contraseña:*</label></td>
-            <td><input type="password" name="contrasena"></td>
+            <td><input type="password" name="contrasena" placeholder="Password"
+            ></td>
         </tr>
         <tr>
-            <td><label for="Contrasena2">confirmar Contraseña*</label></td>
-            <td><input type="password" name="contrasena2"></td>
+            <td><input type="password" name="contrasena2" placeholder="ConfimarPassword"></td>
         </tr>
         <tr>
-            <td><label for="rol">Desarrollador?:*</label></td>
+            <td><label class="form-rol" for="rol">Desarrollador?:*</label></td>
             <td><input type="checkbox" name="rol"></td>
         </tr>
         <tr>
-        <td></td>
         <td><input type="submit" value="Confirmar" name="userRegister"></td>
       </tr>
     </table>

@@ -21,16 +21,7 @@ if (!isset($error)) {
         //iniciamos la sesion
         stonksInicioSesion($conn_localhost, $_POST['correo'], $_POST['contrasena'], "index.php");
 }
-
-
 }
-
-
-
-
-
-
-
 ?>
 
 <html lang="en">
@@ -39,22 +30,23 @@ if (!isset($error)) {
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Steam</title>
+    <title>Stonks</title>
     <link rel="stylesheet" href="style.css">
     <link href="css/bootstrap.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="styleForms.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.0/animate.min.css">
 </head>
 
 <body>
     <br><br><br><br><br>
-    <form action="userLogin.php" method="post">
+    <form action="userLogin.php" method="post" class="form-box animated fadeInUp">
         <table>
+            <h1 class="form-title">Sing In</h1>
             <tr>
-                <td><label for="correo">Correo:</label></td>
-                <td><input type="text" name="correo"></td>
+                <td><input type="text" name="correo" placeholder="Email"></td>
             </tr>
             <tr>
-                <td><label for="contrasena">Contraseña:</label></td>
-                <td><input type="password" name="contrasena"></td>
+                <td><input type="password" name="contrasena" placeholder="Password"></td>
             </tr>
             <tr>
                 <td><input type="submit" value="Login" name="loginSent"></td>
@@ -63,7 +55,5 @@ if (!isset($error)) {
         </table>
     </form>
 
-
 </body>
-
 </html>

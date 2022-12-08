@@ -47,12 +47,20 @@ include("includes/utils.php");
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>stonks</title>
     <link rel="stylesheet" href="style.css">
+<<<<<<< HEAD
 
+=======
+    <link rel="stylesheet" href="styleForms.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.0/animate.min.css">
+
+   
+>>>>>>> b42ea1db741ed2468914554a9e27813d0919e1f8
 </head>
 
 <body>
     <br><br><br><br><br>
 
+<<<<<<< HEAD
     <form action="newGenero.php" method="post">
         <table cellpadding="2">
             <tr>
@@ -72,6 +80,38 @@ include("includes/utils.php");
             </tr>
         </table>
     </form>
+=======
+    <form action="updateUser.php" method="post" class="form-box animated fadeInUp">
+    <table cellpadding="2">
+        <tr>
+        <h1 class="form-title">Agregar genero</h1>
+            <td><input type="text" name="nickName"
+                    value="<?php echo $_SESSION['userNickName'] ?>"></td>
+        </tr>
+        <tr>
+            <td><input type="text" name="nombre" value="<?php echo $_SESSION['userName']?>">
+            </td>
+
+        </tr>
+        <tr>
+            <td><input type="text" name="apellidos"
+                    value="<?php echo $_SESSION['userLastName'] ?>"></td>
+
+        </tr>
+        <tr>
+            <td><input disabled="disabled" type="text" name="correo" value="<?php echo $_SESSION['userEmail']?>"></td>
+
+        </tr>
+        <tr>
+            <td><label class="form-rol" for="rol">Desarrollador?:*</label></td>
+            <td><input type="checkbox" name="rol"></td>
+        </tr>
+        <tr>
+        <td><input type="submit" value="Confirmar" name="userRegister"></td>
+      </tr>
+    </table>
+</form>
+>>>>>>> b42ea1db741ed2468914554a9e27813d0919e1f8
 
 
 </body>
