@@ -7,8 +7,6 @@
     </div>
     <nav>
       <a href="listajuegos.php">TIENDA</a>
-      <a href="#">PERFIL</a>
-      <a href="#">BIBLIOTECA</a>
       <?php if(isset($_SESSION['userNickName'])) {
         echo ("<a href=\"infoUser.php\">" . $_SESSION['userNickName'] . "</a>");
         echo ("<a href=\"#\">Biblioteca</a>");

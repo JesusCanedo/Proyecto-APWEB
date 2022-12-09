@@ -11,29 +11,8 @@ include("connections/querys/DBstonks.php");
 
 //el formulario se envio
 if (isset($_POST['userRegister'])) {
-    //se verifica que nada este vacio
-    foreach ($_POST as $key => $value) {
-        if ($value == '')
-            $error[] = "El campo $key esta vacio :c";
-    }
-
-    //las contraseñas coinciden
-    if ($_POST['contrasena'] != $_POST['contrasena2'])
-        $error[] = "las contraseñas no coinciden";
-    //checamos si hay errores
-    if (!isset($error)) {
-       
-
-        //checamos si es desarrolador
-        if (isset($_POST['rol'])) {
-            $rol = "desarollador";
-        } else {
-            $rol = "agente";
-        }
-        //llamamos la funcion para actualizar el nuevo usuario
-        stonksUpdateUser($conn_localhost,$_SESSION['userId'],$_POST['nickName'],$_POST['nombre'],$_POST['apellidos'],$rol, "updateUser.php?updateUser=true");
-        
-    }
+    //redireccionamos para que mopdifique su usuario
+    header('Location: updateUser.php');
 
 }
 ?>
@@ -62,7 +41,7 @@ include("includes/header.php");
 <body>
     <br><br><br><br><br>
 
-    <form action="updateUser.php" method="post" class="form-box animated fadeInUp">
+    <form action="infoUser.php" method="post" class="form-box animated fadeInUp">
     <table cellpadding="2">
         <tr>
         <h1 class="form-title">informacion del Usuario</h1>
