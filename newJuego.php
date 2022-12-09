@@ -40,7 +40,7 @@ if (isset($_POST['newGenero'])) {
 <!DOCTYPE html>
 <?php
 include("includes/header.php");
-include("includes/utils.php");
+
 ?>
 
 <html lang="en">

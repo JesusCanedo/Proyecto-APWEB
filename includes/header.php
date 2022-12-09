@@ -11,6 +11,12 @@
         echo ("<a href=\"infoUser.php\">" . $_SESSION['userNickName'] . "</a>");
         echo ("<a href=\"bibliotecaUsuario.php\">Biblioteca</a>");
         echo ("<a href=\"index.php?logout=true\">Logout</a>");
+
+        
+          echo ("<a href=\"newJuego.php\">Nuevo juego</a>");
+         
+
+
       }else {
         echo ("<a href=\"userLogin.php\">INGRESAR</a>");
       }
