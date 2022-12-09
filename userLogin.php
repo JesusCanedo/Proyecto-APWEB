@@ -7,7 +7,7 @@ if (!isset($_SESSION)) {
 include("includes/header.php");
 include("connections/conn_localhost.php");
 include("connections/querys/DBstonks.php");
-include("includes/utils.php");
+//include("includes/utils.php");
 
 if (isset($_POST['loginSent'])) {
     //se verifica que nada este vacio
@@ -50,10 +50,10 @@ if (!isset($error)) {
             </tr>
             <tr>
                 <td><input type="submit" value="Login" name="loginSent"></td>
-                <td></td>
             </tr>
         </table>
     </form>
+    
 
 </body>
 </html>

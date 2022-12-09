@@ -37,7 +37,7 @@ if (isset($_POST['userRegister'])) {
 <!DOCTYPE html>
 <?php
 include("includes/header.php");
-include("includes/utils.php");
+//include("includes/utils.php");
 ?>
 
 <html lang="en">

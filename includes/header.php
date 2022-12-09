@@ -7,10 +7,10 @@
     </div>
     <nav>
       <a href="#">TIENDA</a>
-      <a href="#">PERFIL</a>
-      <a href="#">BIBLIOTECA</a>
       <?php if(isset($_SESSION['userNickName'])) {
-        echo ("<a href=\"#\">" . $_SESSION['userNickName'] . "</a>");
+        echo ("<a href=\"infoUser.php\">" . $_SESSION['userNickName'] . "</a>");
+        echo ("<a href=\"#\">Biblioteca</a>");
+        echo ("<a href=\"index.php?logout=true\">Logout</a>");
       }else {
         echo ("<a href=\"userLogin.php\">INGRESAR</a>");
       } ?>
