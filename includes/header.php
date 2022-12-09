@@ -14,9 +14,7 @@
       }else {
         echo ("<a href=\"userLogin.php\">INGRESAR</a>");
       }
-      if(isset($_SESSION['userNickName'])) {
-        echo ("<a href=\"#\">logout</a>");
-      }
+      
        
        
        ?>

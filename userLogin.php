@@ -9,7 +9,7 @@ include("connections/conn_localhost.php");
 include("connections/querys/DBstonks.php");
 //include("includes/utils.php");
 
-include("includes/utils.php");
+
 if (isset($_POST['newUser'])) {
     header(header("location: newUser.php"));
 }

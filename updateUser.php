@@ -32,7 +32,8 @@ if (isset($_POST['userRegister'])) {
         }
         //llamamos la funcion para actualizar el nuevo usuario
         stonksUpdateUser($conn_localhost,$_SESSION['userId'],$_POST['nickName'],$_POST['nombre'],$_POST['apellidos'],$rol, "updateUser.php?updateUser=true");
-        
+        stonksRecargarSession($conn_localhost, $_SESSION['userId']);
+        header('Location: infoUser.php');
     }
 
 }
@@ -40,7 +41,7 @@ if (isset($_POST['userRegister'])) {
 <!DOCTYPE html>
 <?php
 include("includes/header.php");
-include("includes/utils.php");
+
 ?>
 
 <html lang="en">
