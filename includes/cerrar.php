@@ -14,7 +14,7 @@
 		unset($_SESSION['contrasena']);
 
 		//redireccionamos a la pagina principal
-		header('Location: index.php')
+	header('Location: index.php');
 
 	}
 

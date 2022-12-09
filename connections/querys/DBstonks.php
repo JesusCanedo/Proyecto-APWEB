@@ -167,10 +167,14 @@ function stonksGetNombreJuegos($connection)
   if (mysqli_num_rows($resQueryGetNombreJuegos)) {
     // Hacemos un fetch del recordset
     $data = mysqli_fetch_all($resQueryGetNombreJuegos);
+    
     foreach ($data as $key => $value) {
+      $dataGenero = stonksGetDatos($connection,$data[$key][2],"genero");
       $resdata[$key]['id'] = $data[$key][0];
       $resdata[$key]['nombre'] = $data[$key][1];
-      $resdata[$key]['idGenero'] = $data[$key][2];
+      $resdata[$key]['idGenero']['id'] = $dataGenero['id'];
+      $resdata[$key]['idGenero']['nombre'] = $dataGenero['nombre'];
+      $resdata[$key]['idGenero']['descripcion'] = $dataGenero['descripcion'];
       $resdata[$key]['idDesarrollador'] = $data[$key][3];
       $resdata[$key]['descripcion'] = $data[$key][4];
     }

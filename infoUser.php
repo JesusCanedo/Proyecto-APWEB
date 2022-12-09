@@ -39,9 +39,9 @@ include("includes/header.php");
 </head>
 
 <body>
-    <br><br><br><br><br>
+    <br><br><br><br><br><br><br><br><br>
 
-    <form action="infoUser.php" method="post" class="form-box animated fadeInUp">
+    <form action="infoUser.php" method="post" class="form-box">
     <table cellpadding="2">
         <tr>
         <h1 class="form-title">informacion del Usuario</h1>
