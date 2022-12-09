@@ -6,7 +6,7 @@
       </a>
     </div>
     <nav>
-      <a href="#">TIENDA</a>
+      <a href="listaJuegos.php">TIENDA</a>
       <a href="#">PERFIL</a>
       <a href="#">BIBLIOTECA</a>
       <?php if(isset($_SESSION['userNickName'])) {
