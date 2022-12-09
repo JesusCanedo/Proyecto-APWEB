@@ -3,7 +3,7 @@
 $servidor = "4.tcp.ngrok.io:13820";
 $baseDatos = "stonks";
 $usuarioBD = "root";
-$passwordBD = "iswguaymas";
+$passwordBD = "";
 
 // Creamos la conexión
 $conn_localhost = mysqli_connect($servidor, $usuarioBD, $passwordBD) 
