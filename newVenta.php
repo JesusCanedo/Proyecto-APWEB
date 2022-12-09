@@ -5,7 +5,7 @@ if (!isset($_SESSION)) {
     //checamos si inicio sesion
     if (!isset($_SESSION['userId']))
         header('Location: userLogin.php?auth=false');
-    
+
 }
 
 include("connections/conn_localhost.php");
@@ -15,26 +15,17 @@ $juegos = stonksGetNombreJuegos($conn_localhost);
 $bibloteca = stonksGetBibliotecaUsuario($conn_localhost, $_SESSION['userId']);
 
 //el formulario se envio
-if (isset($_POST['newVenta'])) {
-    //se verifica que nada este vacio
-    foreach ($_POST as $key => $value) {
-        if ($value == '')
-            $error[] = "El campo $key esta vacio :c";
+if (isset($_GET['id'])) {
+    foreach ($juegos as $key => $value) {
+        if ($juegos[$key]['id'] == $_GET['id']) {
+            $indiceJuego = $key;
+        }
     }
 
-
-    //checamos si hay errores
-    if (!isset($error)) {
-        //llamamos a la funcion para insertar un nuevo juego
-
-        
-        stonksInsertarVenta($conn_localhost,$_POST['idJuego'],$_SESSION['userId']);
-        header("location: index.php?venta=true");
-
-
-
-    }
-
+}
+if (isset($_GET['venta'])) {
+    stonksInsertarVenta($conn_localhost,$_GET['i'],$_SESSION['userId']);
+    header('Location: bibliotecaUsuario.php');
 }
 ?>
 <!DOCTYPE html>
@@ -57,40 +48,25 @@ include("includes/utils.php");
 <body>
     <br><br><br><br><br>
     <?php
-    
-    ?>
-    <form action="newVenta.php" method="post">
-        <table cellpadding="2">
-            
-            <tr>
-                <td><label for="idJuego">Genero:</label></td>
-                <td><select name="idJuego">
-                    <?php 
-                    for ($i=0; $i < sizeof($juegos); $i++) {
-                        echo "<option value=\"" . $juegos[$i]['id'] . "\">" . $juegos[$i]['nombre'] . "</option>";
-                        
-                    }
-                    ?>
-                </select></td>
-            </tr>
-            <tr>
-                <td><label for="prueba">Genero:</label></td>
-                <td><select name="prueba">
-                    <?php 
-                    for ($i=0; $i < sizeof($juegos); $i++) {
-                        echo "<option value=\"" . $bibloteca[$i]['id'] . "\">" . $bibloteca[$i]['idJuego']['nombre'] . "</option>";
-                        echo "<option value=\"" . $bibloteca[$i]['id'] . "\">" . $bibloteca[$i]['idJuego']['idGenero']['nombre'] . "</option>";
-                    }
-                    ?>
-                </select></td>
-            </tr>
-            <tr>
-                <td></td>
-                <td><input type="submit" value="Confirmar" name="newVenta"></td>
-            </tr>
-        </table>
-    </form>
 
+
+
+    ?>
+    <div>
+        <h2>
+            <?php echo $juegos[$indiceJuego]['nombre'] ?>
+        </h2>
+        <div>
+            <p>
+                <b>Descripcion:</b> <br>
+                <?php echo $juegos[$indiceJuego]['descripcion']; ?> <br>
+                <b>Genero:</b>
+                <?php echo $juegos[$indiceJuego]['idGenero']['nombre']; ?> <br>
+                <b>Seguro de la compra?:</b><br>
+                <?php echo ("<a href=\"newVenta.php?venta=true&i=".$juegos[$indiceJuego]['id']."\">Comprar</a>"); ?>
+            </p>
+        </div>
+    </div>
 
 </body>
 
