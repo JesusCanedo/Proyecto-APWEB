@@ -31,7 +31,7 @@ if (isset($_GET['venta'])) {
 <!DOCTYPE html>
 <?php
 include("includes/header.php");
-include("includes/utils.php");
+
 ?>
 
 <html lang="en">
@@ -42,6 +42,7 @@ include("includes/utils.php");
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>stonks</title>
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="styleTienda.css">
 
 </head>
 
