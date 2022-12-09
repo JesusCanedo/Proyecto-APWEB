@@ -29,7 +29,7 @@ if (isset($_POST['newGenero'])) {
         //llamamos a la funcion para insertar un nuevo juego
         stonksNewJuego($conn_localhost,$_POST['nombreJuego'],$_POST['idGenero'],$_SESSION['userId'],$_POST['descripcionJuego']);
         
-        //header("location: newJuego.php?si=true");
+        //header("location: listaJuegos.php?si=true");
 
 
 

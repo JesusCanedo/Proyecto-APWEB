@@ -170,6 +170,7 @@ function stonksGetNombreJuegos($connection)
     
     foreach ($data as $key => $value) {
       $dataGenero = stonksGetDatos($connection,$data[$key][2],"genero");
+      
       $resdata[$key]['id'] = $data[$key][0];
       $resdata[$key]['nombre'] = $data[$key][1];
       $resdata[$key]['idGenero']['id'] = $dataGenero['id'];

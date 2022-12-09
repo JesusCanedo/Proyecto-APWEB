@@ -24,7 +24,7 @@ include("connections/conn_localhost.php");
 <body>
     <?php
     include("includes/header.php");
-    //include("connections/querys/conn-juego.php");
+    
     $juegos = stonksGetNombreJuegos($conn_localhost);
     foreach ($juegos as $i => $value) {
         # code...

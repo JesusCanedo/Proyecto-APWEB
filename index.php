@@ -1,7 +1,9 @@
 <?php
+//iniciamos o retomamos la sesion
 if (!isset($_SESSION)) {
     session_start();
 }
+//en caso de que exista logout, la sesion se cerrara
 if (isset($_GET['logout'])) {
     session_destroy();
     header('Location: index.php');
@@ -9,7 +11,7 @@ if (isset($_GET['logout'])) {
 
 ?>
 
-=======
+
 <!DOCTYPE html>
 <html lang="en">
 <head>

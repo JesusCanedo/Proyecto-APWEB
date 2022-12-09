@@ -9,10 +9,11 @@ include("connections/conn_localhost.php");
 include("connections/querys/DBstonks.php");
 //include("includes/utils.php");
 
-
+//en caso de que decida registrarse
 if (isset($_POST['newUser'])) {
     header(header("location: newUser.php"));
 }
+//en caso de que se logue
 if (isset($_POST['loginSent'])) {
     //se verifica que nada este vacio
     foreach ($_POST as $key => $value) {
