@@ -28,7 +28,7 @@ if (isset($_POST['userRegister'])) {
         }
         //llamamos la funcion para insertar el nuevo usuario
         stonksInsertUser($conn_localhost, $_POST['nickName'], $_POST['nombre'], $_POST['apellidos'], $_POST['correo'], $_POST['contrasena'], $rol);
-
+        header("location: index.php?registrado=true")
         
     }
 
@@ -37,7 +37,7 @@ if (isset($_POST['userRegister'])) {
 <!DOCTYPE html>
 <?php
 include("includes/header.php");
-include("includes/utils.php");
+//include("includes/utils.php");
 ?>
 
 <html lang="en">

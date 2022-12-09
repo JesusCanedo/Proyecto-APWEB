@@ -32,8 +32,7 @@ if (isset($_POST['userRegister'])) {
         }
         //llamamos la funcion para actualizar el nuevo usuario
         stonksUpdateUser($conn_localhost,$_SESSION['userId'],$_POST['nickName'],$_POST['nombre'],$_POST['apellidos'],$rol, "updateUser.php?updateUser=true");
-        stonksRecargarSession($conn_localhost, $_SESSION['userId']);
-        header('Location: infoUser.php');
+        
     }
 
 }
@@ -66,12 +65,12 @@ include("includes/header.php");
     <form action="updateUser.php" method="post" class="form-box animated fadeInUp">
     <table cellpadding="2">
         <tr>
-        <h1 class="form-title">Actualizar Usuario</h1>
-            <td><input type="text" name="nickName" placeholder="Nickname"
+        <h1 class="form-title">informacion del Usuario</h1>
+            <td><input disabled="disabled" type="text" name="nickName" placeholder="Nickname"
                     value="<?php echo $_SESSION['userNickName'] ?>"></td>
         </tr>
         <tr>
-            <td><input type="text" name="nombre" placeholder="Nombre"
+            <td><input disabled="disabled" type="text" name="nombre" placeholder="Nombre"
              value="<?php echo $_SESSION['userName']?>">
             </td>
 
@@ -88,10 +87,10 @@ include("includes/header.php");
         </tr>
         <tr>
             <td><label class="form-rol" for="rol">Desarrollador?:*</label></td>
-            <td><input type="checkbox" name="rol"></td>
+            <td><input disabled="disabled" type="checkbox" name="rol"></td>
         </tr>
         <tr>
-        <td><input type="submit" value="Confirmar" name="userRegister"></td>
+        <td><a href="updateUser.php"><input type="submit" value="Modificar informacion" name="userRegister"></a></td>
       </tr>
     </table>
 
