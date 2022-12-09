@@ -16,6 +16,7 @@ function stonksInsertUser($connection, $nickName, $nombre, $apellidos, $correo, 
   mysqli_query($connection, $queryRegisterUser) or trigger_error("El query para registrar usuarios falló");
 
 }
+//funcion para iniciar la sesion comparando la contraseña y email
 function stonksInicioSesion($connection, $correo, $contrasena, $pathRedireccion)
 {
   // Armamos el query para verificar email y password en la BD
@@ -46,6 +47,7 @@ function stonksInicioSesion($connection, $correo, $contrasena, $pathRedireccion)
     header("Location: " . $pathRedireccion);
   }
 }
+//funcion para modificar usuario
 function stonksUpdateUser($connection, $userId, $nickName, $nombre, $apellidos, $rol, $pathRedireccion)
 {
 
@@ -64,6 +66,7 @@ function stonksUpdateUser($connection, $userId, $nickName, $nombre, $apellidos, 
   stonksRecargarSession($connection, $userId);
   header("Location: $pathRedireccion");
 }
+//funcion para recargar la sesion
 function stonksRecargarSession($connection, $userId)
 {
 
@@ -185,8 +188,70 @@ function stonksInsertarVenta($connection, $idJuego, $idUsuario)
 function stonksInsertarBiblioteca($connection, $idJuego, $idUsuarios)
 {
   //se puede ejecutar el query directamente dado que no hay nesesidad de proteccion
-  mysqli_query($connection, "INSERT INTO biblioteca (idJuego, idUsuario) VALUES ($idJuego, $idUsuarios))");
+  mysqli_query($connection, "INSERT INTO biblioteca (idJuego, idUsuario	) VALUES ($idJuego, $idUsuarios)");
 }
+//obtiene la lista de la tabla biblioteca del usuario en especifico
+function stonksGetBibliotecaUsuario($connection,$idUsuario){
+  //query para obtener la biblioteca del usuario
+  $queryGetBibliotecaUsuario = "SELECT * FROM biblioteca WHERE idUsuario = $idUsuario";
+  //ejecutamos el query
+  $resulset = mysqli_query($connection, $queryGetBibliotecaUsuario);
+
+  //Contamos el recordset (el resultado esperado para un login valido es 1)
+  if (mysqli_num_rows($resulset)) {
+    // Hacemos un fetch del recordset
+    $data = mysqli_fetch_all($resulset);
+      //recorremos todos los datos
+    foreach ($data as $key => $value) {
+      //obtenemos los datos del juego, genero y desarrollador asociado
+      $dataJuegos = stonksGetJuego($connection,$data[$key][1]);
+      $dataGenero = stonksGetDatos($connection, $dataJuegos['idGenero'],"genero");
+      $dataDesarrolador = stonksGetDatos($connection, $dataJuegos['idDesarrolador'], "usuarios");
+      $resdata[$key]['id'] = $data[$key][0];
+      //asignamos todos los valores correspondientes
+      //empezmos con los datos del juego
+      $resdata[$key]['idJuego']['id'] = $data[$key][1];
+      $resdata[$key]['idJuego']['nombre'] = $dataJuegos['nombre'];
+      //empezamos con los datos de genero y lo ponemos dentro de idGenero
+      $resdata[$key]['idJuego']['idGenero']['id'] = $dataGenero['id'];
+      $resdata[$key]['idJuego']['idGenero']['nombre'] = $dataGenero['nombre'];
+      $resdata[$key]['idJuego']['idGenero']['descripcion'] = $dataGenero['descripcion'];
+      //empezamos desarrollador dentro de id juegos
+      $resdata[$key]['idJuego']['idDesarrollador']['id'] = $dataDesarrolador['id'];
+      $resdata[$key]['idJuego']['idDesarrollador']['userName'] = $dataDesarrolador['userName'];
+      $resdata[$key]['idJuego']['idDesarrollador']['nombre'] = $dataDesarrolador['nombre'];
+      $resdata[$key]['idJuego']['idDesarrollador']['apellidos'] = $dataDesarrolador['apellidos'];
+      $resdata[$key]['idJuego']['idDesarrollador']['correo'] = $dataDesarrolador['correo'];
+      $resdata[$key]['idJuego']['idDesarrollador']['rol'] = $dataDesarrolador['rol'];      
+      //se termina desarrolador
+      $resdata[$key]['idJuego']['descripcion'] = $dataJuegos['descripcion'];
+      //seguimos datos normal
+      $resdata[$key]['idUsuario'] = $data[$key][2];
+      $resdata[$key]['horasJuego'] = $data[$key][3];
+      
+    }
+    //retun de resultado de la matriz cuatri dimencional
+    return ($resdata);
+  }
+
+}
+//obtiene los datos de el juego conforme su id
+function stonksGetJuego($connection,$idJuego){
+  $queryGetJuego = "SELECT * FROM juegos WHERE id = $idJuego";
+  $resulset = mysqli_query($connection,$queryGetJuego);
+  $data = mysqli_fetch_assoc($resulset);
+  return($data);
+}
+//obtiene el los datos de una columna especifica en la tabla seleccionada
+function stonksGetDatos($connection,$id,$tabla){
+  $queryGet = "SELECT * FROM $tabla WHERE id = $id";
+  $resulset = mysqli_query($connection,$queryGet);
+  $data = mysqli_fetch_assoc($resulset);
+  return($data);
+
+
+}
+
 
 
 

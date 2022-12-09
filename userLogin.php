@@ -8,7 +8,9 @@ include("includes/header.php");
 include("connections/conn_localhost.php");
 include("connections/querys/DBstonks.php");
 include("includes/utils.php");
-
+if (isset($_POST['newUser'])) {
+    header(header("location: newUser.php"));
+}
 if (isset($_POST['loginSent'])) {
     //se verifica que nada este vacio
     foreach ($_POST as $key => $value) {
@@ -52,6 +54,11 @@ if (!isset($error)) {
                 <td><input type="submit" value="Login" name="loginSent"></td>
                 <td></td>
             </tr>
+            <tr>
+                <td><input type="submit" value="Registrar" name="newUser"></td>
+                <td></td>
+            </tr>
+              
         </table>
     </form>
 

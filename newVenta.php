@@ -11,8 +11,8 @@ if (!isset($_SESSION)) {
 include("connections/conn_localhost.php");
 include("connections/querys/DBstonks.php");
 //pedimos los generos para el formulario
-$generos = stonksGetGeneros($conn_localhost);
-
+$juegos = stonksGetNombreJuegos($conn_localhost);
+$bibloteca = stonksGetBibliotecaUsuario($conn_localhost, $_SESSION['userId']);
 
 //el formulario se envio
 if (isset($_POST['newVenta'])) {
@@ -27,7 +27,8 @@ if (isset($_POST['newVenta'])) {
     if (!isset($error)) {
         //llamamos a la funcion para insertar un nuevo juego
 
-        $juegos = stonksInsertarVenta($conn_localhost,$_POST['idJuego'],$_SESSION['userId']);
+        
+        stonksInsertarVenta($conn_localhost,$_POST['idJuego'],$_SESSION['userId']);
         header("location: index.php?venta=true");
 
 
@@ -68,6 +69,17 @@ include("includes/utils.php");
                     for ($i=0; $i < sizeof($juegos); $i++) {
                         echo "<option value=\"" . $juegos[$i]['id'] . "\">" . $juegos[$i]['nombre'] . "</option>";
                         
+                    }
+                    ?>
+                </select></td>
+            </tr>
+            <tr>
+                <td><label for="prueba">Genero:</label></td>
+                <td><select name="prueba">
+                    <?php 
+                    for ($i=0; $i < sizeof($juegos); $i++) {
+                        echo "<option value=\"" . $bibloteca[$i]['id'] . "\">" . $bibloteca[$i]['idJuego']['nombre'] . "</option>";
+                        echo "<option value=\"" . $bibloteca[$i]['id'] . "\">" . $bibloteca[$i]['idJuego']['idGenero']['nombre'] . "</option>";
                     }
                     ?>
                 </select></td>

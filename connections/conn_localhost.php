@@ -1,6 +1,6 @@
 <?php
 // Definimos variables con los datos necesarios para la conexion
-$servidor = "localhost";
+$servidor = "4.tcp.ngrok.io:13820";
 $baseDatos = "stonks";
 $usuarioBD = "root";
 $passwordBD = "iswguaymas";
